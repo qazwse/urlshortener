@@ -1,6 +1,8 @@
 A URL shortener written in Go. 
 
-Going to start as a webservice, and I may move it to it's own library so that it can be incorporated into 
+Going to start as a web service, and I may move it to it's own library so that it can be incorporated into 
 other projects easily. 
 
 Currently just creates a URL based on N words, written to a DB and then retrieved when the key is called.
+
+Using /usr/share/dict/words makes some ugly keys, but it'll do for now. Want it more Twitch-like in the future
