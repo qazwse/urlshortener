@@ -2,7 +2,9 @@ package main
 
 import (
 	"bufio"
+	"log"
 	"math/rand"
+	"net/url"
 	"os"
 	"strings"
 	"time"
@@ -12,7 +14,7 @@ import (
 type ShortURL struct {
 	ID           string
 	URL          string
-	Created      string
+	Created      time.Time
 	LastAccessed string
 	NumVisits    uint
 }
@@ -62,8 +64,19 @@ func randomString(numWords int) string {
 }
 
 // NewShortURL creates a new short URL structure
-func NewShortURL(url string) ShortURL {
-	var newurl ShortURL
+func NewShortURL(userurl string) ShortURL {
+	newurl := ShortURL{}
+
+	// Check if the URL entered is a url
+	_, err := url.Parse(userurl)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	newurl.ID = randomString(5)
+	newurl.URL = userurl
+	newurl.Created = time.Now()
+	newurl.NumVisits = 0
 
 	return newurl
 }
