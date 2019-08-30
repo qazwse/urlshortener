@@ -18,5 +18,11 @@ func requestHandlers() {
 }
 
 func main() {
+	CreateDict("/usr/share/dict/words")
+
+	for index := 0; index < 100; index++ {
+		a := NewShortURL("test")
+		fmt.Println(a.ID)
+	}
 
 }
